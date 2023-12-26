@@ -13,7 +13,7 @@ class ContactsController extends Controller
         $_SESSION['post'] = [];
 
         
-        $list = $contact->get_list();
+        $list = $contact->find_all();
 
 
     $this->view('contact/Index',['errorMessages' => $errorMessages, 'post' => $post, 'list'=>$list]);
@@ -21,7 +21,8 @@ class ContactsController extends Controller
 
     public function check(){
         $referer = $_SERVER['HTTP_REFERER'];
-        $url = 'http://localhost/contact/Index';
+        $host = $_SERVER['HTTP_HOST'];
+        $url = 'http://'. $host. '/contact/Index';
         if(!strstr($referer,$url)){
         
             $errorMessages = [];
@@ -72,11 +73,11 @@ class ContactsController extends Controller
 
                 $_SESSION['csrf_token'] = $csrf_token;
                 
-                $name=htmlspecialchars($_POST['name']);
-                $kana=htmlspecialchars($_POST['kana']);
-                $tel=htmlspecialchars($_POST['tel']);
-                $email=htmlspecialchars($_POST['email']);
-                $body=htmlspecialchars($_POST['body']);
+                $name=$_POST['name'];
+                $kana=$_POST['kana'];
+                $tel=$_POST['tel'];
+                $email=$_POST['email'];
+                $body=$_POST['body'];
                 $this->view('contact/check',['csrf_token' => $csrf_token,'name' => $name,'kana' => $kana, 'tel' => $tel, 'email' => $email, 'body' => $body]);
             }
         }else{
@@ -92,24 +93,19 @@ class ContactsController extends Controller
             exit('お問い合わせの送信に失敗しました。');
             }else{
                 $referer = $_SERVER['HTTP_REFERER'];
-                $url = 'http://localhost/contact/check';
+                $host = $_SERVER['HTTP_HOST'];
+                $url = 'http://'. $host. '/contact/check';
                 if(!strstr($referer,$url)){
                     header('Location:/contact/index');
             }else{
                 $contact=new Contact;
-                $_SESSION['name']=htmlspecialchars($_POST['name']);
-                $_SESSION['kana']=htmlspecialchars($_POST['kana']);
-                $_SESSION['tel']=htmlspecialchars($_POST['tel']);
-                $_SESSION['email']=htmlspecialchars($_POST['email']);
-                $_SESSION['body']=htmlspecialchars($_POST['body']);
+                $name=$_POST['name'];
+                $kana=$_POST['kana'];
+                $tel=$_POST['tel'];
+                $email=$_POST['email'];
+                $body=$_POST['body'];
 
-                $result = $contact->create(
-                    $_SESSION['name'],
-                    $_SESSION['kana'],
-                    $_SESSION['tel'],
-                    $_SESSION['email'],
-                    $_SESSION['body']
-                );
+                $contact->create($name,$kana,$tel,$email,$body);
                 $this->view('contact/complete');
             }
         }
@@ -126,7 +122,7 @@ class ContactsController extends Controller
             $_SESSION['id']=$id;
             $contact = new Contact;
             
-            $result = $contact->get_update();
+            $result = $contact->find_by_id($id);
             $errorMessages = $_SESSION['errorMessages'];
             $post = $_SESSION['post'] ?? [];
             $_SESSION['errorMessages'] = [];
@@ -136,14 +132,13 @@ class ContactsController extends Controller
                 $this->view('contact/update',['data' => $result,'csrf_token'=>$csrf_token]);
             }else{
                 $this->view('contact/update',['data'=>$post, 'errorMessages'=>$errorMessages]);
-            }
+        }
             
     }
     
 
     public function update(){
-           
-        $id = $_SESSION['id'];
+            
 
             if(!empty($errorMessages)){
                     $_SESSION['errorMessages'] = $errorMessages;
@@ -153,22 +148,15 @@ class ContactsController extends Controller
                 if(!isset($_POST['csrf_token'])|| $_POST['csrf_token']!== $_SESSION['csrf_token']){
                     exit('お問い合わせの送信に失敗しました。');
                 }else{
+                    $id=$_SESSION['id'];
                     $contact = new Contact();
-                    $_SESSION['name']=htmlspecialchars($_POST['name']);
-                    $_SESSION['kana']=htmlspecialchars($_POST['kana']);
-                    $_SESSION['tel']=htmlspecialchars($_POST['tel']);
-                    $_SESSION['email']=htmlspecialchars($_POST['email']);
-                    $_SESSION['body']=htmlspecialchars($_POST['body']);                
+                    $name=$_POST['name'];
+                    $kana=$_POST['kana'];
+                    $tel=$_POST['tel'];
+                    $email=$_POST['email'];
+                    $body=$_POST['body'];                
 
-                    $contact->update(
-                        $_SESSION['id'],
-                        $_SESSION['name'],
-                        $_SESSION['kana'],
-                        $_SESSION['tel'],
-                        $_SESSION['email'],
-                        $_SESSION['body']
-                            
-                    );
+                    $contact->update($id,$name,$kana,$tel,$email,$body);
 
                     header('Location:/contact/index');
                 }

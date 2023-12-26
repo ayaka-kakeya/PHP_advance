@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2023-12-24 15:02:45
+/* Smarty version 4.3.4, created on 2023-12-26 20:34:15
   from '/Applications/MAMP/htdocs/mvc_app/Views/contact/Index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6587c98597d8f8_34089043',
+  'unifunc' => 'content_658aba37840091_66090645',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0f4b3260eb9af4363921fabb5c6e64206b448bdc' => 
     array (
       0 => '/Applications/MAMP/htdocs/mvc_app/Views/contact/Index.tpl',
-      1 => 1703397747,
+      1 => 1703590451,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6587c98597d8f8_34089043 (Smarty_Internal_Template $_smarty_tpl) {
+function content_658aba37840091_66090645 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
     <head>
@@ -37,12 +37,14 @@ function content_6587c98597d8f8_34089043 (Smarty_Internal_Template $_smarty_tpl)
                 
                 
                     <h2 class="text-center">入力画面</h2>
-                    <form action="/contact/check" method = "post">
+                    <form class="was-validated" action="/contact/check" method = "post" novalidate>
                        
                         <div class="form-group">
                             <label for="name">氏名(必須)</label>
                             <input type="text" required maxlength="10" class="form-control" name="name" placeholder="テスト太郎" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['post']->value['name'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ">
+                            <div class="valid-feedback">入力完了</div>
+                            <div class="invalid-feedback">氏名は10文字以内で必須入力です。</div>
                             <p class="error-text"><?php echo (($tmp = $_smarty_tpl->tpl_vars['errorMessages']->value['name'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 </p>
                         </div>
@@ -50,6 +52,8 @@ function content_6587c98597d8f8_34089043 (Smarty_Internal_Template $_smarty_tpl)
                             <label for="kana"> フリガナ(必須)</label>
                             <input type="text" required maxlength="10" class="form-control" name="kana" placeholder="テストタロウ" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['post']->value['kana'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ">
+                            <div class="valid-feedback">入力完了</div>
+                            <div class="invalid-feedback">フリガナは10文字以内で必須入力です。</div>                           
                             <p class="error-text"><?php echo (($tmp = $_smarty_tpl->tpl_vars['errorMessages']->value['kana'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 </p>
                         </div>
@@ -57,6 +61,7 @@ function content_6587c98597d8f8_34089043 (Smarty_Internal_Template $_smarty_tpl)
                             <label for="tel">電話番号(任意)</label>
                             <input type="tel" pattern="\d+" class="form-control" name="tel" placeholder="00000000000" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['post']->value['tel'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ">
+                            <div class="invalid-feedback">電話番号は数字のみで入力してください。</div>
                             <p class="error-text"><?php echo (($tmp = $_smarty_tpl->tpl_vars['errorMessages']->value['tel'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 </p>
                         </div>
@@ -64,6 +69,8 @@ function content_6587c98597d8f8_34089043 (Smarty_Internal_Template $_smarty_tpl)
                             <label for="email">メールアドレス(必須)</label>
                             <input type="email" required class="form-control" name="email" placeholder="exemple@cin-group.co.jp" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['post']->value['email'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 ">
+                            <div class="valid-feedback">入力完了</div>
+                            <div class="invalid-feedback">メールアドレスは必須入力です。</div>
                             <p class="error-text"><?php echo (($tmp = $_smarty_tpl->tpl_vars['errorMessages']->value['email'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 </p>
                         </div>
@@ -71,6 +78,8 @@ function content_6587c98597d8f8_34089043 (Smarty_Internal_Template $_smarty_tpl)
                             <label for="body">お問い合わせ内容(必須)</label>
                             <textarea required style="white-space:pre-wrap" placeholder="お問い合わせ" class="form-control" rows="5" name="body"><?php echo (($tmp = $_smarty_tpl->tpl_vars['post']->value['body'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 </textarea>
+                            <div class="valid-feedback">入力完了</div>
+                            <div class="invalid-feedback">お問い合わせ内容は必須入力です。</div>
                             <p class="error-text"><?php echo (($tmp = $_smarty_tpl->tpl_vars['errorMessages']->value['body'] ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 </p>
                         </div>
@@ -91,11 +100,11 @@ $__section_row_0_total = $__section_row_0_loop;
 $_smarty_tpl->tpl_vars['__smarty_section_row'] = new Smarty_Variable(array());
 if ($__section_row_0_total !== 0) {
 for ($__section_row_0_iteration = 1, $_smarty_tpl->tpl_vars['__smarty_section_row']->value['index'] = 0; $__section_row_0_iteration <= $__section_row_0_total; $__section_row_0_iteration++, $_smarty_tpl->tpl_vars['__smarty_section_row']->value['index']++){
-?><tr><td><?php echo $_smarty_tpl->tpl_vars['list']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_row']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_row']->value['index'] : null)]['name'];?>
-</td><td><?php echo $_smarty_tpl->tpl_vars['list']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_row']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_row']->value['index'] : null)]['kana'];?>
-</td><td><?php echo $_smarty_tpl->tpl_vars['list']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_row']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_row']->value['index'] : null)]['tel'];?>
-</td><td><?php echo $_smarty_tpl->tpl_vars['list']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_row']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_row']->value['index'] : null)]['email'];?>
-</td><td style="white-space:pre-wrap"><?php echo $_smarty_tpl->tpl_vars['list']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_row']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_row']->value['index'] : null)]['body'];?>
+?><tr><td><?php echo htmlentities(mb_convert_encoding((string)$_smarty_tpl->tpl_vars['list']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_row']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_row']->value['index'] : null)]['name'], 'UTF-8', 'UTF-8'), ENT_QUOTES, 'UTF-8', true);?>
+</td><td><?php echo htmlentities(mb_convert_encoding((string)$_smarty_tpl->tpl_vars['list']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_row']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_row']->value['index'] : null)]['kana'], 'UTF-8', 'UTF-8'), ENT_QUOTES, 'UTF-8', true);?>
+</td><td><?php echo htmlentities(mb_convert_encoding((string)$_smarty_tpl->tpl_vars['list']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_row']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_row']->value['index'] : null)]['tel'], 'UTF-8', 'UTF-8'), ENT_QUOTES, 'UTF-8', true);?>
+</td><td><?php echo htmlentities(mb_convert_encoding((string)$_smarty_tpl->tpl_vars['list']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_row']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_row']->value['index'] : null)]['email'], 'UTF-8', 'UTF-8'), ENT_QUOTES, 'UTF-8', true);?>
+</td><td style="white-space:pre-wrap"><?php echo htmlentities(mb_convert_encoding((string)$_smarty_tpl->tpl_vars['list']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_row']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_row']->value['index'] : null)]['body'], 'UTF-8', 'UTF-8'), ENT_QUOTES, 'UTF-8', true);?>
 </td><td><a href="/contact/getupdate?id=<?php echo $_smarty_tpl->tpl_vars['list']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_row']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_row']->value['index'] : null)]['id'];?>
 ">編集</a></td><td><a href="/contact/delete?id=<?php echo $_smarty_tpl->tpl_vars['list']->value[(isset($_smarty_tpl->tpl_vars['__smarty_section_row']->value['index']) ? $_smarty_tpl->tpl_vars['__smarty_section_row']->value['index'] : null)]['id'];?>
 " onclick="return confirm('本当に削除しますか？')">削除</a></td></tr><?php

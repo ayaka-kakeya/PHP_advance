@@ -42,7 +42,7 @@ class Contact extends Db
            }
     }
 
-    public function get_list(){
+    public function find_all(){
         try{
             $query = 'SELECT name,kana,tel,email,body,id FROM contacts';
             $stmt = $this->dbh->prepare($query);
@@ -56,9 +56,8 @@ class Contact extends Db
         }
     }
 
-    public function get_update(){
-        $id = $_GET['id'];
-
+    public function find_by_id($id){
+    
         try {
             $query = "SELECT * FROM contacts WHERE id = :id";
             $stmt = $this->dbh->prepare($query);
@@ -70,13 +69,6 @@ class Contact extends Db
             echo $e->getMessage();
             exit();
         }
-
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        $name = $row['name'];
-        $kana = $row['kana'];
-        $tel = $row['email'];
-        $body = $row['body'];
-
     }
     
    public function update(int $id, string $name, string $kana, string $tel, string $email, string $body){

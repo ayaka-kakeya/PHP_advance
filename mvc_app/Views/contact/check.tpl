@@ -16,24 +16,24 @@
                     <form action="/contact/create" method="post">
                         <div>
                             <label for="name">氏名</label>
-                            <input type="text" class="form-control" name="name" value={$name}>
+                            <input type="text" class="form-control" name="name" value={$name|escape:'htmlall'}>
                             
                         </div>
                         <div>
                             <label for="kana"> フリガナ</label>
-                            <input type="text" class="form-control" name="kana" value={$kana}>
+                            <input type="text" class="form-control" name="kana" value={$kana|escape:'htmlall'}>
                         </div>
                         <div>
                             <label for="tel">電話番号</label>
-                            <input type="text" class="form-control" name="tel" value={$tel}>
+                            <input type="text" class="form-control" name="tel" value={$tel|escape:'htmlall'}>
                         </div>
                         <div>
                             <label for="email">メールアドレス</label>
-                            <input type="text" class="form-control" name="email" value={$email}>
+                            <input type="text" class="form-control" name="email" value={$email|escape:'htmlall'}>
                         </div>
                         <div>
                             <label for="body">お問い合わせ内容</label>
-                            <textarea style="white-space:pre-wrap" class="form-control" rows="5" name="body">{$body}</textarea>
+                            <textarea style="white-space:pre-wrap" class="form-control" rows="5" name="body">{$body|escape:'htmlall'}</textarea>
                         </div>
 
                         <input type="hidden" name="csrf_token" value={$csrf_token}>

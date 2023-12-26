@@ -13,31 +13,41 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 mx-auto col-md-8 p-2">
                     <h2 class="text-center">更新画面</h2>
-                    <form action="/contact/update" method="post">
+                    <form class="was-validated" action="/contact/update" method="post" novalidate>
                         
                         <div>
                             <label for="name">氏名</label>
-                            <input type="text" class="form-control" name="name" value="{$data->name|default:$data['name']}">
+                            <input type="text" class="form-control" maxlength="10" name="name" value="{$data->name|escape:'htmlall'}" required>
+                            <div class="valid-feedback">入力完了</div>
+                            <div class="invalid-feedback">氏名は10文字以内で必須入力です。</div>
                             <p class="error-text">{$errorMessages['name']|default:''}</p>
                             
                         </div>
                         <div>
                             <label for="kana"> フリガナ</label>
-                            <input type="text" class="form-control" name="kana" value="{$data->kana|default:$data['kana']}">
+                            <input type="text" class="form-control" maxlength="10" name="kana" value="{$data->kana|escape:'htmlall'}" required>
+                            <div class="valid-feedback">入力完了</div>
+                            <div class="invalid-feedback">フリガナは10文字以内で必須入力です。</div>
                             <p class="error-text">{$errorMessages['kana']|default:''}</p>
                         </div>
                         <div>
                             <label for="tel">電話番号</label>
-                            <input type="text" class="form-control" name="tel" value="{$data->tel|default:$data['tel']}">
+                            <input type="tel" pattern="\d+" class="form-control" name="tel" value="{$data->tel|escape:'htmlall'}">
+                            <div class="invalid-feedback">電話番号は数字のみで入力してください。</div>
+                            <p class="error-text">{$errorMessages['tel']|default:''}</p>
                         </div>
                         <div>
                             <label for="email">メールアドレス</label>
-                            <input type="text" class="form-control" name="email" value="{$data->email|default:$data['email']}">
+                            <input type="email" class="form-control" name="email" value="{$data->email|escape:'htmlall'}" required>
+                            <div class="valid-feedback">入力完了</div>
+                            <div class="invalid-feedback">メールアドレスは必須入力です。</div>
                             <p class="error-text">{$errorMessages['email']|default:''}</p>
                         </div>
                         <div>
                             <label for="body">お問い合わせ内容</label>
-                            <textarea style="white-space:pre-wrap" class="form-control" rows="5" name="body">{$data->body|default:$data['body']}</textarea>
+                            <textarea required style="white-space:pre-wrap" class="form-control" rows="5" name="body">{$data->body|escape:'htmlall'}</textarea>
+                            <div class="valid-feedback">入力完了</div>
+                            <div class="invalid-feedback">お問い合わせ内容は必須入力です。</div>
                             <p class="error-text">{$errorMessages['body']|default:''}</p>
                         </div>
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2023-12-24 15:07:05
+/* Smarty version 4.3.4, created on 2023-12-26 19:38:56
   from '/Applications/MAMP/htdocs/mvc_app/Views/contact/check.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6587ca8916bf22_64599787',
+  'unifunc' => 'content_658aad40e3bc98_48283577',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '48312d0a47ab80721e14caab8a7d8f725ca05bb2' => 
     array (
       0 => '/Applications/MAMP/htdocs/mvc_app/Views/contact/check.tpl',
-      1 => 1703397759,
+      1 => 1703586200,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6587ca8916bf22_64599787 (Smarty_Internal_Template $_smarty_tpl) {
+function content_658aad40e3bc98_48283577 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
     <head>
@@ -39,28 +39,28 @@ function content_6587ca8916bf22_64599787 (Smarty_Internal_Template $_smarty_tpl)
                     <form action="/contact/create" method="post">
                         <div>
                             <label for="name">氏名</label>
-                            <input type="text" class="form-control" name="name" value=<?php echo $_smarty_tpl->tpl_vars['name']->value;?>
+                            <input type="text" class="form-control" name="name" value=<?php echo htmlentities(mb_convert_encoding((string)$_smarty_tpl->tpl_vars['name']->value, 'UTF-8', 'UTF-8'), ENT_QUOTES, 'UTF-8', true);?>
 >
                             
                         </div>
                         <div>
                             <label for="kana"> フリガナ</label>
-                            <input type="text" class="form-control" name="kana" value=<?php echo $_smarty_tpl->tpl_vars['kana']->value;?>
+                            <input type="text" class="form-control" name="kana" value=<?php echo htmlentities(mb_convert_encoding((string)$_smarty_tpl->tpl_vars['kana']->value, 'UTF-8', 'UTF-8'), ENT_QUOTES, 'UTF-8', true);?>
 >
                         </div>
                         <div>
                             <label for="tel">電話番号</label>
-                            <input type="text" class="form-control" name="tel" value=<?php echo $_smarty_tpl->tpl_vars['tel']->value;?>
+                            <input type="text" class="form-control" name="tel" value=<?php echo htmlentities(mb_convert_encoding((string)$_smarty_tpl->tpl_vars['tel']->value, 'UTF-8', 'UTF-8'), ENT_QUOTES, 'UTF-8', true);?>
 >
                         </div>
                         <div>
                             <label for="email">メールアドレス</label>
-                            <input type="text" class="form-control" name="email" value=<?php echo $_smarty_tpl->tpl_vars['email']->value;?>
+                            <input type="text" class="form-control" name="email" value=<?php echo htmlentities(mb_convert_encoding((string)$_smarty_tpl->tpl_vars['email']->value, 'UTF-8', 'UTF-8'), ENT_QUOTES, 'UTF-8', true);?>
 >
                         </div>
                         <div>
                             <label for="body">お問い合わせ内容</label>
-                            <textarea style="white-space:pre-wrap" class="form-control" rows="5" name="body"><?php echo $_smarty_tpl->tpl_vars['body']->value;?>
+                            <textarea style="white-space:pre-wrap" class="form-control" rows="5" name="body"><?php echo htmlentities(mb_convert_encoding((string)$_smarty_tpl->tpl_vars['body']->value, 'UTF-8', 'UTF-8'), ENT_QUOTES, 'UTF-8', true);?>
 </textarea>
                         </div>
 
